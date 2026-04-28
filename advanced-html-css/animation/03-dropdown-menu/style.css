@@ -17,7 +17,6 @@
   padding: 0;
   margin: 0;
   background-color: rgb(99, 97, 97);
-
   display: none;
 }
 
@@ -26,7 +25,42 @@ ul.dropdown-menu li:hover {
 }
 
 .visible {
+  animation: 1s expand;
+  transform-origin: top;
+  animation-fill-mode: both;
   display: block;
 }
 
+.dropdown-menu:not(.visible) {
+  animation: 1s retract;
+  transform-origin: top;
+  animation-fill-mode: both;
+}
 
+@keyframes expand {
+  0% {
+    transform: scale(1, 0);
+    display: none;
+  }
+  70% {
+    transform: scale(1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+    display: block;
+  }
+}
+
+@keyframes retract {
+  0% {
+    transform: scale(1, 1);
+    display: block;
+  }
+  30% {
+    transform: scale(1, 1.1);
+  }
+  100% {
+    transform: scale(1, 0);
+    display: none;
+  }
+}
